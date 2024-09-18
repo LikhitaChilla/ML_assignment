@@ -41,8 +41,7 @@ selected_features={}
 for feature,options in features.items():
     selected_features[feature]=st.sidebar.selectbox(f'Select {feature}',options)
 
-dd=pd.DataFrame(list(selected_features.items()),columns=['feature','selected value'])
-st.table(dd)
+
     
 data = {
     'Hours_Studied': param1,
@@ -82,6 +81,8 @@ input_data =df
 # Make prediction on button click
 if st.button('Predict'):
     prediction = predict(input_data)
+    dd=pd.DataFrame(list(selected_features.items()),columns=['feature','selected value'])
+    st.table(dd)
     st.write(f'The predicted student performance is : {prediction[0]}')
 
 # Optional: Display the model's details

@@ -2,14 +2,20 @@ import streamlit as st
 import pickle
 import numpy as np
 import pandas as pd
+from sklearn.preprocessing import PolynomialFeatures
 
 # Load the pickled model
-with open('linear_regression_modell.pkl', 'rb') as model_file:
+with open('poly_regression_modell.pkl', 'rb') as model_file:
     model,feature_names = pickle.load(model_file)
+
 
 # Function to make predictions
 def predict(input_data):
-    return model.predict(input_data)
+    poly = PolynomialFeatures(degree=2)
+    x_train_poly = poly.fit_transform(input_data)
+    y_pred = model.predict(x_train_poly)
+    return y_pred
+
 
 # Streamlit app
 st.title('Model Deployment with Streamlit')

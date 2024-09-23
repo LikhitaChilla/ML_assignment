@@ -7,8 +7,7 @@ from sklearn.preprocessing import PolynomialFeatures
 # Load the pickled model
 with open('poly_regression_modell.pkl', 'rb') as model_file:
     model,feature_names = pickle.load(model_file)
-with open('label_encoder.pkl', 'rb') as model_file:
-    encoder = pickle.load(model_file)
+
 
 
 # Function to make predictions
